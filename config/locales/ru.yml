@@ -9,6 +9,18 @@ ru:
       create: Сохранить
       submit: Сохранить
       update: Сохранить
+  buttons:
+    edit: Редактировать
+    destroy: Удалить
+    confirm:
+      user: Действительно удалить пользователя?
+    new: 
+      user: Новый пользователь
+  headers:
+    users:
+      edit: Редактирование пользователя
+      new: Новый пользователь
+      index: Список пользователей
 
   views:
     pagination:
@@ -23,10 +35,8 @@ ru:
     attributes:
       user:
         email: Пользовательское имя/электронная почта
-    errors:
-      models:
-        person:
-          attributes:
-            snils:
-              check_sum: имеет неправильную контрольную сумму
+        birthday: Дата рождения
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+
           

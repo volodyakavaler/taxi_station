@@ -1,19 +1,31 @@
-%h1 Listing users
+-# 
+  Эта страница не адаптивна! Так как сделать подобные сраницы адаптивными -
+  это отдельное задание! 
+.page-header
+  %h1= t('headers.users.index')
 
-%table
+%table.table.table-hover.table-striped
+  %caption
+    = link_to new_user_path, class: 'btn btn-success' do
+      = fa_icon :plus
+      = t('buttons.new.user')      
   %thead
     %tr
-      %th
-      %th
+      %th= User.human_attribute_name(:email)
+      %th= User.human_attribute_name(:birthday)
       %th
 
   %tbody
     - @users.each do |user|
       %tr
-        %td= link_to 'Show', user
-        %td= link_to 'Edit', edit_user_path(user)
-        %td= link_to 'Destroy', user, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New User', new_user_path
+        %td.center= user.email
+        %td.center= lnil(user.birthday)
+        %td.right
+          = link_to edit_user_path(user), class: 'btn btn-info' do
+            = fa_icon :edit
+            = t('buttons.edit')
+          = link_to user, :method => :delete, 
+          :data => { :confirm => t('buttons.confirm.user') }, 
+          class: 'btn btn-danger' do
+            = fa_icon :times
+            = t('buttons.destroy')
