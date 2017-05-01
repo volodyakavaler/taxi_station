@@ -1,6 +1,12 @@
 -# 
   Эта страница не адаптивна! Так как сделать подобные сраницы адаптивными -
   это отдельное задание! 
+=breadcrumb_tag do
+  %li.active
+    Пользователи
+  %li
+    Администрирование
+
 .page-header
   %h1= t('headers.users.index')
 
@@ -14,7 +20,6 @@
       %th= User.human_attribute_name(:email)
       %th= User.human_attribute_name(:birthday)
       %th
-
   %tbody
     - @users.each do |user|
       %tr

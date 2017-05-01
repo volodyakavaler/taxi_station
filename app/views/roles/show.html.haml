@@ -1,15 +1,21 @@
-%p#notice= notice
+=breadcrumb_tag do
+  %li.active
+    = @role.name
+  %li
+    = link_to 'Роли', roles_path
+  %li
+    Администрирование
 
-%p
-  %b Name:
-  = @role.name
-%p
-  %b Info:
-  = @role.info
-%p
-  %b Fill info:
-  = @role.full_info
+%h1= @role.name
 
-= link_to 'Edit', edit_role_path(@role)
-\|
-= link_to 'Back', roles_path
+%dl
+  %dt= Role.human_attribute_name(:name)
+  %dd= @role.name
+
+  %dt= Role.human_attribute_name(:info)
+  %dd= @role.info
+
+  %dt= Role.human_attribute_name(:full_info)
+  %dd= @role.full_info
+
+

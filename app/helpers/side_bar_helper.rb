@@ -13,11 +13,15 @@ module SideBarHelper
       :children => [
       {:name => 'Пользователи',
        :controller => :users, :action => :index,
-       :icon => 'file-text-o',
+       :icon => 'users',
        :class => 'long'},
       {:name => 'Добавление',
        :controller => :users, :action => :new,
-       :icon => 'user-plus'}
+       :icon => 'user-plus'},
+      {:name => 'Роли',
+       :controller => :roles, :action => :index,
+       :icon => 'align-center',
+       :class => 'long'},
     ]} 
     result << {
       :name => 'Заголовок ссылок',
@@ -36,7 +40,7 @@ module SideBarHelper
   
   def is_open?(ctr, act)
     case ctr.to_s
-    when 'users'
+    when 'users', 'roles'
       ctr.to_s == controller_name.to_s  
     else
       false
