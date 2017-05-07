@@ -1,6 +1,15 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
+  def search
+    if params.has_key?('search')
+      @orders = Order.search(params['search'])
+    else
+      @orders = []
+    end
+    params['search'] ||= {}
+  end
+
   # GET /orders
   # GET /orders.json
   def index
