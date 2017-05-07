@@ -1,0 +1,41 @@
+.page-header
+  %h1= t('headers.drivers.index')
+
+%table.table.table-hover.table-striped
+  %caption
+    = link_to new_driver_path, class: 'btn btn-success' do
+      = fa_icon :plus
+      = t('buttons.new.driver')
+  %thead
+    %tr
+      %th= Driver.human_attribute_name(:last_name)
+      %th= Driver.human_attribute_name(:first_name)
+      %th= Driver.human_attribute_name(:patronymic)
+      %th= Driver.human_attribute_name(:date_of_birth)
+      %th= Driver.human_attribute_name(:itn)
+      %th= Driver.human_attribute_name(:passport)
+      %th= Driver.human_attribute_name(:automobile_id)
+      %th
+
+  %tbody
+    - @drivers.each do |driver|
+      %tr
+        %td.center= driver.last_name
+        %td.center= driver.first_name
+        %td.center= driver.patronymic
+        %td.center= driver.date_of_birth
+        %td.center= driver.itn
+        %td.center= driver.passport
+        %td.center= driver.automobile != nil ? driver.automobile.state_number : '-'
+        %td.right
+          = link_to driver, class: 'btn btn-warning' do
+            = fa_icon :eye
+            = t('buttons.show')
+          = link_to edit_driver_path(driver), class: 'btn btn-info' do
+            = fa_icon :edit
+            = t('buttons.edit')
+          = link_to driver, :method => :delete,
+          :data => { :confirm => t('buttons.confirm.driver') },
+          class: 'btn btn-danger' do
+            = fa_icon :times
+            = t('buttons.destroy')

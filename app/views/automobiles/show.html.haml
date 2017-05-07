@@ -1,0 +1,13 @@
+%h1= @automobile.automobile_model + " " + @automobile.state_number
+
+%dl
+  %dt= Automobile.human_attribute_name(:automobile_model)
+  %dd= @automobile.automobile_model
+  %dt= Automobile.human_attribute_name(:automobile_type)
+  %dd= @automobile.automobile_type
+  %dt= Automobile.human_attribute_name(:state_number)
+  %dd= @automobile.state_number
+  %dt= Automobile.human_attribute_name(:color)
+  %dd= @automobile.color
+  %dt= Automobile.human_attribute_name(:release)
+  %dd= @automobile.release

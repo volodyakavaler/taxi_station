@@ -1,0 +1,17 @@
+%h1= @order.id
+
+%dl
+  %dt= Order.human_attribute_name(:time_of_travel)
+  %dd= @order.time_of_travel
+  %dt= Order.human_attribute_name(:departure_address)
+  %dd= @order.departure_address
+  %dt= Order.human_attribute_name(:arrival_address)
+  %dd= @order.arrival_address
+  %dt= Order.human_attribute_name(:number_of_passengers)
+  %dd= @order.number_of_passengers
+  %dt= Order.human_attribute_name(:length_of_route)
+  %dd= @order.length_of_route
+  %dt= Order.human_attribute_name(:automobile_id)
+  %dd= @order.automobile.state_number
+  %dt= Order.human_attribute_name(:tariff_id)
+  %dd= @order.tariff.name

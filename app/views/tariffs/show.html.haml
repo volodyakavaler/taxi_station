@@ -1,0 +1,11 @@
+%h1= @tariff.name
+
+%dl
+  %dt= Tariff.human_attribute_name(:name)
+  %dd= @tariff.name
+  %dt= Tariff.human_attribute_name(:time_of_day)
+  %dd= @tariff.time_of_day
+  %dt= Tariff.human_attribute_name(:range)
+  %dd= @tariff.range
+  %dt= Tariff.human_attribute_name(:price_per_kilometer)
+  %dd= @tariff.price_per_kilometer

@@ -1,0 +1,17 @@
+%h1= @driver.last_name + " " + @driver.first_name + " " + @driver.patronymic
+
+%dl
+  %dt= Driver.human_attribute_name(:last_name)
+  %dd= @driver.last_name
+  %dt= Driver.human_attribute_name(:first_name)
+  %dd= @driver.first_name
+  %dt= Driver.human_attribute_name(:patronymic)
+  %dd= @driver.patronymic
+  %dt= Driver.human_attribute_name(:date_of_birth)
+  %dd= @driver.date_of_birth
+  %dt= Driver.human_attribute_name(:itn)
+  %dd= @driver.itn
+  %dt= Driver.human_attribute_name(:passport)
+  %dd= @driver.passport
+  %dt= Driver.human_attribute_name(:automobile_id)
+  %dd= @driver.automobile != nil ? @driver.automobile.state_number : '-'

@@ -1,0 +1,34 @@
+%h1= t('headers.tariffs.index')
+
+%table.table.table-hover.table-striped
+  %caption
+    = link_to new_tariff_path, class: 'btn btn-success' do
+      = fa_icon :plus
+      = t('buttons.new.tariff')
+  %thead
+    %tr
+      %th= Tariff.human_attribute_name(:name)
+      %th= Tariff.human_attribute_name(:time_of_day)
+      %th= Tariff.human_attribute_name(:range)
+      %th= Tariff.human_attribute_name(:price_per_kilometer)
+      %th
+
+  %tbody
+    - @tariffs.each do |tariff|
+      %tr
+        %td.center= tariff.name
+        %td.center= tariff.time_of_day
+        %td.center= tariff.range
+        %td.center= tariff.price_per_kilometer
+        %td.right
+          = link_to tariff, class: 'btn btn-warning' do
+            = fa_icon :eye
+            = t('buttons.show')
+          = link_to edit_tariff_path(tariff), class: 'btn btn-info' do
+            = fa_icon :edit
+            = t('buttons.edit')
+          = link_to tariff, :method => :delete,
+          :data => { :confirm => t('buttons.confirm.tariff') },
+          class: 'btn btn-danger' do
+            = fa_icon :times
+            = t('buttons.destroy')

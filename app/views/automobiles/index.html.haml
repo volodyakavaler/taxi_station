@@ -1,0 +1,37 @@
+.page-header
+  %h1= t('headers.automobiles.index')
+
+%table.table.table-hover.table-striped
+  %caption
+    = link_to new_automobile_path, class: 'btn btn-success' do
+      = fa_icon :plus
+      = t('buttons.new.automobile')
+  %thead
+    %tr
+      %th= Automobile.human_attribute_name(:automobile_model)
+      %th= Automobile.human_attribute_name(:automobile_type)
+      %th= Automobile.human_attribute_name(:state_number)
+      %th= Automobile.human_attribute_name(:color)
+      %th= Automobile.human_attribute_name(:release)
+      %th
+
+  %tbody
+    - @automobiles.each do |automobile|
+      %tr
+        %td.center= automobile.automobile_model
+        %td.center= automobile.automobile_type
+        %td.center= automobile.state_number
+        %td.center= automobile.color
+        %td.center= automobile.release
+        %td.right
+          = link_to automobile, class: 'btn btn-warning' do
+            = fa_icon :eye
+            = t('buttons.show')
+          = link_to edit_automobile_path(automobile), class: 'btn btn-info' do
+            = fa_icon :edit
+            = t('buttons.edit')
+          = link_to automobile, :method => :delete,
+          :data => { :confirm => t('buttons.confirm.automobile') },
+          class: 'btn btn-danger' do
+            = fa_icon :times
+            = t('buttons.destroy')
