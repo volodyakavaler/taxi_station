@@ -27,6 +27,8 @@ ru:
       automobile: Новый автомобиль
       order: Новый заказ
       tariff: Новый тариф
+    search:
+      order: Найти заказы
   headers:
     users:
       edit: Редактирование пользователя
@@ -56,6 +58,7 @@ ru:
       new: Новый заказ
       edit: Редактирование заказа
       new: Создание заказа
+      search: Поиск заказа
   views:
     pagination:
       first: ⇤
@@ -63,6 +66,8 @@ ru:
       previous: ←
       next: →
       truncate: …
+    search:
+      found: Найдено
   activerecord:
     models:
       user: Пользователь

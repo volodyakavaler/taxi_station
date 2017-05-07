@@ -1,41 +1,40 @@
-%h1 Search
-%hr
+.page-header
+  %h1= t('headers.orders.search')
+
 = form_tag search_orders_path(), method: :get do
-  = Order.human_attribute_name(:departure_address)
-  = text_field_tag 'search[departure_address]', params['search']['departure_address']
-
-  = Order.human_attribute_name(:arrival_address)
-  = text_field_tag 'search[arrival_address]', params['search']['arrival_address']
-
-  = Order.human_attribute_name(:number_of_passengers)
-  = text_field_tag 'search[number_of_passengers]', params['search']['number_of_passengers']
-
-  = Order.human_attribute_name(:length_of_route)
-  from
-  = text_field_tag 'search[length_of_route_from]', params['search']['length_of_route_from']
-  to
-  = text_field_tag 'search[length_of_route_to]', params['search']['length_of_route_to']
-
-  = Order.human_attribute_name(:automobile_id)
-  = select_tag 'search[automobile]',
-  options_for_select(Automobile.all.map{|x| [x.automobile_model + ": " + x.state_number, x.state_number]}),
-  include_blank: true
-
-  = Order.human_attribute_name(:tariff_id)
-  = select_tag 'search[tariff]',
-  options_for_select(Tariff.all.map{|x| [x.name, x.name]}), include_blank: true
-
-
-  -# кнопка поиска:
   .field
-  = submit_tag 'Search'
+    = Order.human_attribute_name(:departure_address)
+    = text_field_tag 'search[departure_address]', params['search']['departure_address']
+  .field
+    = Order.human_attribute_name(:arrival_address)
+    = text_field_tag 'search[arrival_address]', params['search']['arrival_address']
+  .field
+    = Order.human_attribute_name(:number_of_passengers)
+    = text_field_tag 'search[number_of_passengers]', params['search']['number_of_passengers']
+  .field
+    = Order.human_attribute_name(:length_of_route)
+    from
+    = text_field_tag 'search[length_of_route_from]', params['search']['length_of_route_from']
+    to
+    = text_field_tag 'search[length_of_route_to]', params['search']['length_of_route_to']
+  .field
+    = Order.human_attribute_name(:automobile_id)
+    = select_tag 'search[automobile]',
+    options_for_select(Automobile.all.map{|x| [x.automobile_model + ": " + x.state_number, x.state_number]}),
+    include_blank: true
+  .field
+    = Order.human_attribute_name(:tariff_id)
+    = select_tag 'search[tariff]',
+    options_for_select(Tariff.all.map{|x| [x.name, x.name]}), include_blank: true
+  .actions
+    = submit_tag t('buttons.search.order'), class: 'btn btn-primary'
 %hr
--# вывод найденного:
-Found:
-= @orders.size
+
+
+%h3= t('views.search.found') + ": " + @orders.size.to_s
 
 - if @orders.size > 0
-  %table
+  %table.table.table-hover.table-striped
     %thead
       %tr
         %th= Order.human_attribute_name(:time_of_travel)
@@ -56,4 +55,3 @@ Found:
           %td.center= i.length_of_route
           %td.center= i.automobile.state_number
           %td.center= i.tariff.name
-  %br
