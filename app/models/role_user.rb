@@ -10,4 +10,9 @@ class RoleUser < ActiveRecord::Base
       self.role.name == rname
     end
   end
+  
+  # Нужно из-за JSON-формата поля data
+  def data=(value)
+    self[:data] = {data: value}
+  end
 end
