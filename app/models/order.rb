@@ -11,12 +11,14 @@ class Order < ActiveRecord::Base
 
   # валидатор времени подачи такси:
   def time_of_travel_cannot_be_in_the_past
-    if time_of_travel < Time.now
-      errors.add(:time_of_travel, "не может быть меньше текущего времени")
+    if !time_of_travel.nil?
+      if time_of_travel < Time.now
+        errors.add(:time_of_travel, "не может быть меньше текущего времени")
+      end
     end
   end
 
-  # поиск 
+  # поиск
   def self.search(params)
     result = Order.includes(:automobile, :tariff)
 
