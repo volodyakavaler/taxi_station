@@ -17,6 +17,7 @@
       = t('buttons.search.order')
   %thead
     %tr
+      %th= Order.human_attribute_name(:id)
       %th= Order.human_attribute_name(:time_of_travel)
       %th= Order.human_attribute_name(:departure_address)
       %th= Order.human_attribute_name(:arrival_address)
@@ -29,6 +30,7 @@
   %tbody
     - @orders.each do |order|
       %tr
+        %td.center= order.id
         %td.center= order.time_of_travel
         %td.center= order.departure_address
         %td.center= order.arrival_address

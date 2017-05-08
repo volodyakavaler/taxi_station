@@ -26,8 +26,12 @@
     .col-md-3
       .form-group
         = Order.human_attribute_name(:length_of_route)
-        = text_field_tag 'search[length_of_route_from]', params['search']['length_of_route_from'], class: 'form-control'
-        = text_field_tag 'search[length_of_route_to]', params['search']['length_of_route_to'], class: 'form-control'
+        = text_field_tag 'search[length_of_route_from]',
+        params['search']['length_of_route_from'],
+        class: 'form-control', placeholder: t('forms.order_search.from')
+        = text_field_tag 'search[length_of_route_to]',
+        params['search']['length_of_route_to'],
+        class: 'form-control', placeholder: t('forms.order_search.to')
     .col-md-6
       .form-group
         = Order.human_attribute_name(:automobile_id)
@@ -45,12 +49,13 @@
 
 
 .page-header
-  %h1= t('views.search.found') + ": " + @orders.size.to_s
+  %h1= t('forms.order_search.found') + ": " + @orders.size.to_s
 
 - if @orders.size > 0
   %table.table.table-hover.table-striped
     %thead
       %tr
+        %th= Order.human_attribute_name(:id)
         %th= Order.human_attribute_name(:time_of_travel)
         %th= Order.human_attribute_name(:departure_address)
         %th= Order.human_attribute_name(:arrival_address)
@@ -62,6 +67,7 @@
     %tbody
       - @orders.each do |i|
         %tr
+          %td.center= i.id
           %td.center= i.time_of_travel
           %td.center= i.departure_address
           %td.center= i.arrival_address

@@ -59,6 +59,11 @@ ru:
       edit: Редактирование заказа
       new: Создание заказа
       search: Поиск заказов
+  forms:
+    order_search:
+      from: от
+      to: до
+      found: Найдено
   views:
     pagination:
       first: ⇤
@@ -66,8 +71,6 @@ ru:
       previous: ←
       next: →
       truncate: …
-    search:
-      found: Найдено
   activerecord:
     models:
       user: Пользователь
@@ -110,6 +113,7 @@ ru:
         range: Дальности поездки с точки зрения удалённости от центра Москвы
         price_per_kilometer: Цена за километр пути
       order:
+        id: №
         date_of_travel: Дата подачи такси
         time_of_travel: Время подачи такси
         departure_address: Адрес подачи такси

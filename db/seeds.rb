@@ -110,38 +110,38 @@ if (t4 = Tariff.find_by_name('T4')).nil?
 end
 
 # Заказы:
-if (o1 = Order.find_by_departure_address('Москва, ул.Бол.Якиманка, 55')).nil?
+if (o1 = Order.find_by_departure_address('Москва, ул. Бол. Якиманка, 55')).nil?
   o1 = Order.create!(
-    time_of_travel: '30.04.2018 11:00', departure_address: 'Москва, ул.Бол.Якиманка, 55',
-    arrival_address: 'Москва, м.Парк Победы', number_of_passengers: '2',
+    time_of_travel: '30.04.2018 11:00', departure_address: 'Москва, ул. Бол. Якиманка, 55',
+    arrival_address: 'Москва, м. Парк Победы', number_of_passengers: '2',
     length_of_route: '5', automobile: a1, tariff: t1
   )
 end
 if (o2 = Order.find_by_departure_address('Москва, ул. Академика Королёва, 1')).nil?
   o2 = Order.create!(
-    time_of_travel: '01.05.2018 15:45', departure_address: 'Москва, ул.Академика Королёва, 1',
-    arrival_address: 'Москва, Ярославское ш., 186, к.1', number_of_passengers: '1',
+    time_of_travel: '01.05.2018 15:45', departure_address: 'Москва, ул. Академика Королёва, 1',
+    arrival_address: 'Москва, Ярославское ш., 186к1', number_of_passengers: '1',
     length_of_route: '10', automobile: a2, tariff: t2
   )
 end
 if (o3 = Order.find_by_departure_address('Москва, Спортивный пр-д, 15/2')).nil?
   o3 = Order.create!(
     time_of_travel: '05.05.2018 16:45', departure_address: 'Москва, Спортивный пр-д, 15/2',
-    arrival_address: 'Серпухов, ул.Советская, 10', number_of_passengers: '1',
+    arrival_address: 'Серпухов, ул. Советская, 10', number_of_passengers: '1',
     length_of_route: '120', automobile: a3, tariff: t3
   )
 end
-if (o4 = Order.find_by_departure_address('Москва, ул.Вешних Вод, 1')).nil?
+if (o4 = Order.find_by_departure_address('Москва, ул. Вешних Вод, 1')).nil?
   o4 = Order.create!(
-    time_of_travel: '12.05.2018 11:10', departure_address: 'Москва, ул.Вешних Вод, 1',
-    arrival_address: 'Москва, ул.Барклая, 14', number_of_passengers: '3',
+    time_of_travel: '12.05.2018 11:10', departure_address: 'Москва, ул. Вешних Вод, 1',
+    arrival_address: 'Москва, ул. Барклая, 14', number_of_passengers: '3',
     length_of_route: '24', automobile: a3, tariff: t1
   )
 end
-if (o5 = Order.find_by_departure_address('Москва, м.Юго-западная')).nil?
+if (o5 = Order.find_by_departure_address('Москва, м. Юго-западная')).nil?
   o4 = Order.create!(
-    time_of_travel: '13.05.2018 23:40', departure_address: 'Москва, м.Юго-западная',
-    arrival_address: 'ул.Кантемировская, 29к2', number_of_passengers: '1',
+    time_of_travel: '13.05.2018 23:40', departure_address: 'Москва, м. Юго-западная',
+    arrival_address: 'Москва, ул. Кантемировская, 29к2', number_of_passengers: '1',
     length_of_route: '18', automobile: a5, tariff: t4
   )
 end
