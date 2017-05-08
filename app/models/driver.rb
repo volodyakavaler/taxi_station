@@ -11,8 +11,10 @@ class Driver < ActiveRecord::Base
 
   # валидатор даты рождения:
   def date_of_birth_cannot_be_in_the_future
-    if date_of_birth > Date.today
-      errors.add(:date_of_birth, "не может быть больше текущей даты")
+    if !date_of_birth.nil?
+      if date_of_birth > Date.today
+        errors.add(:date_of_birth, "не может быть больше текущей даты")
+      end
     end
   end
 end

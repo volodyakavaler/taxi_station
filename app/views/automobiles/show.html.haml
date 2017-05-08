@@ -1,4 +1,12 @@
-%h1= @automobile.automobile_model + " " + @automobile.state_number
+=breadcrumb_tag do
+  %li.active
+    = @automobile.automobile_model + ": " + @automobile.state_number
+  %li
+    = link_to 'Автомобили', automobiles_path
+  %li
+    Таксопарк
+
+%h1= @automobile.automobile_model + ": " + @automobile.state_number
 
 %dl
   %dt= Automobile.human_attribute_name(:automobile_model)

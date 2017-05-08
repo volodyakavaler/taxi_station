@@ -1,31 +1,48 @@
 = form_for @order do |f|
-  - if @order.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@order.errors.count, "error")} prohibited this order from being saved:"
-      %ul
-        - @order.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :time_of_travel
-    = f.datetime_select :time_of_travel
-  .field
-    = f.label :departure_address
-    = f.text_field :departure_address
-  .field
-    = f.label :arrival_address
-    = f.text_field :arrival_address
-  .field
-    = f.label :number_of_passengers
-    = f.number_field :number_of_passengers
-  .field
-    = f.label :length_of_route
-    = f.text_field :length_of_route
-  .field
-    = f.label :automobile_id
-    = f.select :automobile_id, options_for_select(Automobile.all.map{|x|[x.state_number, x.id]}), include_blank: true
-  .field
-    = f.label :tariff_id
-    = f.select :tariff_id, options_for_select(Tariff.all.map{|x|[x.name, x.id]}), include_blank: true
+  = error_messages_for @order
+  .row
+    .col-md-12
+      .form-group
+        = f.label :time_of_travel
+        .input-group.date.datetimepicker
+          = f.text_field(:time_of_travel, value: Time.now,
+            class: 'form-control')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        = f.error_messages_for(:time_of_travel)
+  .row
+    .col-md-6
+      .form-group
+        = f.label :departure_address
+        = f.text_field :departure_address, class: 'form-control'
+        = f.error_messages_for(:departure_address)
+    .col-md-6
+      .form-group
+        = f.label :arrival_address
+        = f.text_field :arrival_address, class: 'form-control'
+        = f.error_messages_for(:arrival_address)
+  .row
+    .col-md-3
+      .form-group
+        = f.label :number_of_passengers
+        = f.number_field :number_of_passengers, class: 'form-control'
+        = f.error_messages_for(:number_of_passengers)
+    .col-md-3
+      .form-group
+        = f.label :length_of_route
+        = f.text_field :length_of_route, class: 'form-control'
+        = f.error_messages_for(:length_of_route)
+    .col-md-6
+      .form-group
+        = f.label :automobile_id
+        = f.select :automobile_id, options_for_select(Automobile.all.map{|x|[x.state_number, x.id]}),
+        {include_blank: true}, {class: 'form-control'}
+        = f.error_messages_for(:automobile_id)
+    .col-md-6
+      .form-group
+        = f.label :tariff_id
+        = f.select :tariff_id, options_for_select(Tariff.all.map{|x|[x.name, x.id]}),
+        {include_blank: true}, {class: 'form-control'}
+        = f.error_messages_for(:tariff_id)
   .actions
     = f.submit nil, class: 'btn btn-primary'

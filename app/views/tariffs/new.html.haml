@@ -1,3 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = t('headers.tariffs.new')
+  %li
+    = link_to 'Тарифы', tariffs_path
+  %li
+    Таксопарк
+
 .page-header
   %h1= t('headers.tariffs.new')
 

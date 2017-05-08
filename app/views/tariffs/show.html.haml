@@ -1,3 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = @tariff.name
+  %li
+    = link_to 'Тарифы', tariffs_path
+  %li
+    Таксопарк
+
 %h1= @tariff.name
 
 %dl

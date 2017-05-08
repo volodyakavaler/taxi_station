@@ -1,3 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = @driver.last_name + " " + @driver.first_name + " " + @driver.patronymic
+  %li
+    = link_to 'Водители', drivers_path
+  %li
+    Таксопарк
+
 %h1= @driver.last_name + " " + @driver.first_name + " " + @driver.patronymic
 
 %dl
