@@ -2,9 +2,9 @@ module SideBarHelper
   def side_bar_items(ru)
     result = []
     result << {
-      :name => 'Сслыка без детей',
+      :name => 'На главную',
       :icon => 'list',
-      :controller => :welcome, 
+      :controller => :welcome,
       :action => :index
     }
     result << {
@@ -22,26 +22,26 @@ module SideBarHelper
        :controller => :roles, :action => :index,
        :icon => 'align-center',
        :class => 'long'},
-    ]} 
+    ]}
     result << {
-      :name => 'Заголовок ссылок',
-      :icon => 'search-plus',
+      :name => 'Таксопарк',
+      :icon => 'taxi',
       :children => [
-      {:name => 'Ссылка ребёнок',
-       :controller => :welcome, :action => :index,
-       :icon => 'binoculars'},
-      {:name => 'Ссылка ребёнок',
-       :controller => :welcome, :action => :index,
-       :icon => 'search',
+      {:name => 'Автомобили',
+       :controller => :automobiles, :action => :index,
+       :icon => 'automobile'},
+      {:name => 'Заказы',
+       :controller => :orders, :action => :index,
+       :icon => 'sticky-note',
        :class => 'long'}
-    ]} 
+    ]}
     result
   end
-  
+
   def is_open?(ctr, act)
     case ctr.to_s
-    when 'users', 'roles'
-      ctr.to_s == controller_name.to_s  
+    when 'users', 'roles', 'automobiles', 'orders'
+      ctr.to_s == controller_name.to_s
     else
       false
     end

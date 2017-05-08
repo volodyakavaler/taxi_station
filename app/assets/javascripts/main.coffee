@@ -12,4 +12,3 @@ app_ready_f = ->
   window.datepicker_activation()
 $(document).ready app_ready_f
 $(document).on 'page:load', app_ready_f
- 

@@ -58,7 +58,7 @@ ru:
       new: Новый заказ
       edit: Редактирование заказа
       new: Создание заказа
-      search: Поиск заказа
+      search: Поиск заказов
   views:
     pagination:
       first: ⇤

@@ -1,3 +1,11 @@
+=breadcrumb_tag do
+  %li.active
+    = @order.id
+  %li
+    = link_to 'Заказы', orders_path
+  %li
+    Таксопарк
+
 %h1= @order.id
 
 %dl
