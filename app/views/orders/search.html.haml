@@ -42,10 +42,10 @@
         {include_blank: true, class: 'form-control'}
   .actions
     = submit_tag t('buttons.search.order'), class: 'btn btn-primary'
-%hr
 
 
-%h3= t('views.search.found') + ": " + @orders.size.to_s
+.page-header
+  %h1= t('views.search.found') + ": " + @orders.size.to_s
 
 - if @orders.size > 0
   %table.table.table-hover.table-striped
