@@ -37,6 +37,12 @@ if (a4 = Automobile.find_by_state_number('рт10597')).nil?
     state_number: 'рт10597', color: 'Белый', release: '2016'
   )
 end
+if (a5 = Automobile.find_by_state_number('тт78277')).nil?
+  a5 = Automobile.create!(
+    automobile_model: 'Toyota Camry', automobile_type: 'Бизнес',
+    state_number: 'тт78277', color: 'Красный', release: '2017'
+  )
+end
 
 # Водители:
 if (d1 = Driver.find_by_passport('4546456889')).nil?
@@ -64,6 +70,20 @@ if (d3 = Driver.find_by_passport('4975702719')).nil?
   d3 = Driver.create!(
     last_name: 'Козлов', first_name: 'Алексей', patronymic: 'Германович',
     date_of_birth: '04.12.1969', itn: '778065074852', passport: '4975702719'
+  )
+end
+if (d4 = Driver.find_by_passport('4975702223')).nil?
+  d4 = Driver.create!(
+    last_name: 'Орлов', first_name: 'Кузьма', patronymic: 'Владимирович',
+    date_of_birth: '01.01.1955', itn: '771762084851', passport: '4975702223',
+    automobile: a4
+  )
+end
+if (d5 = Driver.find_by_passport('4995102753')).nil?
+  d5 = Driver.create!(
+    last_name: 'Гордеев', first_name: 'Олег', patronymic: 'Алексеевич',
+    date_of_birth: '12.05.1972', itn: '712065859833', passport: '4995102753',
+    automobile: a5
   )
 end
 
@@ -109,5 +129,19 @@ if (o3 = Order.find_by_departure_address('Москва, Спортивный п�
     time_of_travel: '05.05.2018 16:45', departure_address: 'Москва, Спортивный пр-д, 15/2',
     arrival_address: 'Серпухов, ул.Советская, 10', number_of_passengers: '1',
     length_of_route: '120', automobile: a3, tariff: t3
+  )
+end
+if (o4 = Order.find_by_departure_address('Москва, ул.Вешних Вод, 1')).nil?
+  o4 = Order.create!(
+    time_of_travel: '12.05.2018 11:10', departure_address: 'Москва, ул.Вешних Вод, 1',
+    arrival_address: 'Москва, ул.Барклая, 14', number_of_passengers: '3',
+    length_of_route: '24', automobile: a3, tariff: t1
+  )
+end
+if (o5 = Order.find_by_departure_address('Москва, м.Юго-западная')).nil?
+  o4 = Order.create!(
+    time_of_travel: '13.05.2018 23:40', departure_address: 'Москва, м.Юго-западная',
+    arrival_address: 'ул.Кантемировская, 29к2', number_of_passengers: '1',
+    length_of_route: '18', automobile: a5, tariff: t4
   )
 end
