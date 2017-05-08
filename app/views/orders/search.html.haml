@@ -11,14 +11,30 @@
 
 = form_tag search_orders_path(), method: :get do
   .row
-    .col-md-6
+    .col-md-3
+      .form-group
+        = Order.human_attribute_name(:time_of_travel)
+        .input-group.date.datetimepicker
+          = text_field_tag 'search[time_of_travel_from]',
+          params['search']['time_of_travel_from'],
+          class: 'form-control', placeholder: t('forms.order_search.from')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+        .input-group.date.datetimepicker
+          = text_field_tag 'search[time_of_travel_to]',
+          params['search']['time_of_travel_to'],
+          class: 'form-control', placeholder: t('forms.order_search.to')
+          %span.input-group-addon
+            %span.glyphicon.glyphicon-calendar
+    .col-md-9
       .form-group
         = Order.human_attribute_name(:departure_address)
         = text_field_tag 'search[departure_address]', params['search']['departure_address'], class: 'form-control'
-    .col-md-6
+    .col-md-9
       .form-group
         = Order.human_attribute_name(:arrival_address)
         = text_field_tag 'search[arrival_address]', params['search']['arrival_address'], class: 'form-control'
+  .row
     .col-md-3
       .form-group
         = Order.human_attribute_name(:number_of_passengers)

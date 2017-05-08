@@ -22,6 +22,12 @@ class Order < ActiveRecord::Base
   def self.search(params)
     result = Order.includes(:automobile, :tariff)
 
+    if params['time_of_travel_from'].present?
+      result = result.where.not(time_of_travel: Time.at(0)...Time.parse(params['time_of_travel_from']))
+    end
+    if params['time_of_travel_to'].present?
+      result = result.where(time_of_travel: Time.at(0)..Time.parse(params['time_of_travel_to']))
+    end
     if params['departure_address'].present?
       result = result.where(departure_address: params['departure_address'])
     end
@@ -32,10 +38,10 @@ class Order < ActiveRecord::Base
       result = result.where(number_of_passengers: params['number_of_passengers'])
     end
     if params['length_of_route_from'].present?
-      result = result.where.not(length_of_route: 0..(params['length_of_route_from']).to_i)
+      result = result.where.not(length_of_route: 0...(params['length_of_route_from']).to_f)
     end
     if params['length_of_route_to'].present?
-      result = result.where(length_of_route: 0..(params['length_of_route_to']).to_i)
+      result = result.where(length_of_route: 0..(params['length_of_route_to']).to_f)
     end
     if params['automobile'].present?
       result = result.where(automobiles: {state_number: params['automobile']})
