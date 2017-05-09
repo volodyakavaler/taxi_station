@@ -61,6 +61,11 @@ ru:
       search: Поиск заказов
   forms:
     order_search:
+      form:
+        order: По атрибутам заказа
+        tariff: По атрибутам тарифа
+        automobile: По атрибутам автомобиля
+        driver: По атрибутам водителя
       from: от
       to: до
       found: Найдено

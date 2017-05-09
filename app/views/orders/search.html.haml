@@ -10,56 +10,71 @@
   %h1= t('headers.orders.search')
 
 = form_tag search_orders_path(), method: :get do
-  .row
-    .col-md-3
-      .form-group
-        = Order.human_attribute_name(:time_of_travel)
-        .input-group.date.datetimepicker
-          = text_field_tag 'search[time_of_travel_from]',
-          params['search']['time_of_travel_from'],
+  .well
+    %h3= t('forms.order_search.form.order')
+    .row
+      .col-md-3
+        .form-group
+          = Order.human_attribute_name(:time_of_travel)
+          .input-group.date.datetimepicker
+            = text_field_tag 'search[time_of_travel_from]',
+            params['search']['time_of_travel_from'],
+            class: 'form-control', placeholder: t('forms.order_search.from')
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-calendar
+          .input-group.date.datetimepicker
+            = text_field_tag 'search[time_of_travel_to]',
+            params['search']['time_of_travel_to'],
+            class: 'form-control', placeholder: t('forms.order_search.to')
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-calendar
+      .col-md-9
+        .form-group
+          = Order.human_attribute_name(:departure_address)
+          = text_field_tag 'search[departure_address]',
+          params['search']['departure_address'],
+          class: 'form-control'
+      .col-md-9
+        .form-group
+          = Order.human_attribute_name(:arrival_address)
+          = text_field_tag 'search[arrival_address]',
+          params['search']['arrival_address'],
+          class: 'form-control'
+    .row
+      .col-md-3
+        .form-group
+          = Order.human_attribute_name(:number_of_passengers)
+          = text_field_tag 'search[number_of_passengers]',
+          params['search']['number_of_passengers'],
+          class: 'form-control'
+      .col-md-3
+        .form-group
+          = Order.human_attribute_name(:length_of_route)
+          = text_field_tag 'search[length_of_route_from]',
+          params['search']['length_of_route_from'],
           class: 'form-control', placeholder: t('forms.order_search.from')
-          %span.input-group-addon
-            %span.glyphicon.glyphicon-calendar
-        .input-group.date.datetimepicker
-          = text_field_tag 'search[time_of_travel_to]',
-          params['search']['time_of_travel_to'],
+          = text_field_tag 'search[length_of_route_to]',
+          params['search']['length_of_route_to'],
           class: 'form-control', placeholder: t('forms.order_search.to')
-          %span.input-group-addon
-            %span.glyphicon.glyphicon-calendar
-    .col-md-9
-      .form-group
-        = Order.human_attribute_name(:departure_address)
-        = text_field_tag 'search[departure_address]', params['search']['departure_address'], class: 'form-control'
-    .col-md-9
-      .form-group
-        = Order.human_attribute_name(:arrival_address)
-        = text_field_tag 'search[arrival_address]', params['search']['arrival_address'], class: 'form-control'
-  .row
-    .col-md-3
-      .form-group
-        = Order.human_attribute_name(:number_of_passengers)
-        = text_field_tag 'search[number_of_passengers]', params['search']['number_of_passengers'], class: 'form-control'
-    .col-md-3
-      .form-group
-        = Order.human_attribute_name(:length_of_route)
-        = text_field_tag 'search[length_of_route_from]',
-        params['search']['length_of_route_from'],
-        class: 'form-control', placeholder: t('forms.order_search.from')
-        = text_field_tag 'search[length_of_route_to]',
-        params['search']['length_of_route_to'],
-        class: 'form-control', placeholder: t('forms.order_search.to')
-    .col-md-6
-      .form-group
-        = Order.human_attribute_name(:automobile_id)
-        = select_tag 'search[automobile]',
-        options_for_select(Automobile.all.map{|x| [x.automobile_model + ": " + x.state_number, x.state_number]}),
-        {include_blank: true, class: 'form-control'}
-    .col-md-6
-      .form-group
-        = Order.human_attribute_name(:tariff_id)
-        = select_tag 'search[tariff]',
-        options_for_select(Tariff.all.map{|x| [x.name, x.name]}),
-        {include_blank: true, class: 'form-control'}
+      .col-md-6
+        .form-group
+          = Order.human_attribute_name(:automobile_id)
+          = select_tag 'search[automobile]',
+          options_for_select(Automobile.all.map{|x| [x.automobile_model + ": " + x.state_number, x.state_number]}),
+          {include_blank: true, class: 'form-control'}
+      .col-md-6
+        .form-group
+          = Order.human_attribute_name(:tariff_id)
+          = select_tag 'search[tariff]',
+          options_for_select(Tariff.all.map{|x| [x.name, x.name]}),
+          {include_blank: true, class: 'form-control'}
+  .well
+    %h3= t('forms.order_search.form.tariff')
+  .well
+    %h3= t('forms.order_search.form.automobile')
+  .well
+    %h3= t('forms.order_search.form.driver')
+
   .actions
     = submit_tag t('buttons.search.order'), class: 'btn btn-primary'
 
