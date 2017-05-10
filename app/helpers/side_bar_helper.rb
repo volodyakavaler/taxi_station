@@ -27,9 +27,10 @@ module SideBarHelper
       :name => 'Таксопарк',
       :icon => 'taxi',
       :children => [
-      {:name => 'Автомобили',
-       :controller => :automobiles, :action => :index,
-       :icon => 'automobile'},
+      {:name => 'Водители',
+       :controller => :drivers, :action => :index,
+       :icon => 'drivers-license',
+       :class => 'long'},
       {:name => 'Заказы',
        :controller => :orders, :action => :index,
        :icon => 'sticky-note',
