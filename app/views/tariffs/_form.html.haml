@@ -9,13 +9,15 @@
     .col-md-6
       .form-group
         = f.label :time_of_day
-        = f.select :time_of_day, ["День", "Ночь"], {include_blank: true}, {class: 'form-control'}
+        = f.select :time_of_day, ["День", "Ночь"],
+        {include_blank: true}, {class: 'form-control'}
         = f.error_messages_for(:time_of_day)
   .row
     .col-md-6
       .form-group
       = f.label :range
-      = f.select :range, ["в пределах МКАД", "за МКАД", "Подмосковье"], {include_blank: true},  {class: 'form-control'}
+      = f.select :range, ["в пределах МКАД", "за МКАД", "Подмосковье"],
+      {include_blank: true},  {class: 'form-control'}
       = f.error_messages_for(:range)
     .col-md-6
       .form-group
