@@ -9,7 +9,7 @@ class Driver < ActiveRecord::Base
   validates :itn, format: {with: /\d{12}/, message: "должен состоять из 12 цифр"}, uniqueness: true
   validates :passport, format: {with: /\d{10}/, message: "должны состоять из 10 цифр"}, uniqueness: true
 
-  accepts_nested_attributes_for :automobile, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :automobile, allow_destroy: true
 
   # валидатор даты рождения:
   def date_of_birth_cannot_be_in_the_future
