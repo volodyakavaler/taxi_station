@@ -41,7 +41,7 @@ module SideBarHelper
 
   def is_open?(ctr, act)
     case ctr.to_s
-    when 'users', 'roles', 'automobiles', 'orders'
+    when 'users', 'roles', 'drivers', 'orders'
       ctr.to_s == controller_name.to_s
     else
       false

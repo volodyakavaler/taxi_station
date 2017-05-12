@@ -8,17 +8,19 @@ class DriversController < ApplicationController
   end
 
   # GET /drivers/1
-  # GET /drivers/1.json
+  # GET /drivers/1.jsonz
   def show
   end
 
   # GET /drivers/new
   def new
     @driver = Driver.new
+    @driver.build_automobile
   end
 
   # GET /drivers/1/edit
   def edit
+    # @driver.build_automobile
   end
 
   # POST /drivers
@@ -69,6 +71,7 @@ class DriversController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def driver_params
-      params.require(:driver).permit(:last_name, :first_name, :patronymic, :date_of_birth, :itn, :passport, :automobile_id)
+      params.require(:driver).permit(:last_name, :first_name, :patronymic, :date_of_birth, :itn, :passport, :automobile_id,
+      automobile_attributes: [:_destroy, :id, :automobile_model, :automobile_type, :state_number, :color, :release])
     end
 end

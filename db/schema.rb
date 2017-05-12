@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20170507200623) do
   enable_extension "plpgsql"
 
   create_table "automobiles", force: :cascade do |t|
-    t.string   "automobile_model", limit: 20, null: false
+    t.string   "automobile_model", limit: 30, null: false
     t.string   "automobile_type",             null: false
     t.string   "state_number",                null: false
     t.string   "color",            limit: 20, null: false

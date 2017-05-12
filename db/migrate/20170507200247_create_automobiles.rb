@@ -1,7 +1,7 @@
 class CreateAutomobiles < ActiveRecord::Migration
   def change
     create_table :automobiles do |t|
-      t.string :automobile_model, null: false, limit: 20
+      t.string :automobile_model, null: false, limit: 30
       t.string :automobile_type, null: false
       t.string :state_number, null: false
       t.string :color, null: false, limit: 20
