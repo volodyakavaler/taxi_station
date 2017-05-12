@@ -1,5 +1,6 @@
 class RoleUsersController < ApplicationController
   before_action :set_role_user, only: [:show, :edit, :update, :destroy]
+  before_action -> {check_role('admin')}, except: [:new, :create, :activate]
 
   # GET /role_users
   # GET /role_users.json

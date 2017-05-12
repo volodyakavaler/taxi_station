@@ -9,6 +9,8 @@ class Order < ActiveRecord::Base
   validates :length_of_route, numericality: {greater_than_or_equal_to: 1}
   validates :time_of_travel, :automobile_id, :tariff_id, presence: true
 
+  accepts_nested_attributes_for :tariff, allow_destroy: true
+
   # валидатор времени подачи такси:
   def time_of_travel_cannot_be_in_the_past
     if !time_of_travel.nil?

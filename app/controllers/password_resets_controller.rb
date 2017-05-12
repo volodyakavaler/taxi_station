@@ -1,11 +1,11 @@
 class PasswordResetsController < ApplicationController
   skip_before_action :require_login
-  skip_before_action :check_app_auth
-  
+  skip_before_action :check_app_auth, except: [:index]
+
   def new
-    
+
   end
-  
+
   def create
     @user = User.find_by_email(params[:email])
 

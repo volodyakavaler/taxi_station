@@ -22,7 +22,7 @@ module SideBarHelper
        :controller => :roles, :action => :index,
        :icon => 'align-center',
        :class => 'long'},
-    ]}
+    ]} if ru.try(:is_admin?)
     result << {
       :name => 'Таксопарк',
       :icon => 'taxi',
@@ -35,7 +35,7 @@ module SideBarHelper
        :controller => :orders, :action => :index,
        :icon => 'sticky-note',
        :class => 'long'}
-    ]}
+    ]} if (ru.try(:is_admin?) or ru.try(:is_operator?))
     result
   end
 

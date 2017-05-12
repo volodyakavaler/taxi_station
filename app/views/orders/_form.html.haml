@@ -38,11 +38,42 @@
         = f.select :automobile_id, options_for_select(Automobile.all.map{|x|[x.automobile_model + ": " + x.state_number + " [" + x.automobile_type + "]", x.id]}),
         {include_blank: true}, {class: 'form-control'}
         = f.error_messages_for(:automobile_id)
-    .col-md-3
-      .form-group
-        = f.label :tariff_id
-        = f.select :tariff_id, options_for_select(Tariff.all.map{|x|[x.name, x.id]}),
-        {include_blank: true}, {class: 'form-control'}
-        = f.error_messages_for(:tariff_id)
+    -# .col-md-3
+    -#   .form-group
+    -#     = f.label :tariff_id
+    -#     = f.select :tariff_id, options_for_select(Tariff.all.map{|x|[x.name, x.id]}),
+    -#     {include_blank: true}, {class: 'form-control'}
+    -#     = f.error_messages_for(:tariff_id)
+  %div{class: 'panel panel-info'}
+    .panel-heading
+      = t('activerecord.models.tariff')
+    .panel-body
+      = f.fields_for (:tariff) do |df|
+        = df.hidden_field(:id)
+        .row
+          .col-md-6
+            .form-group
+              = df.label :name
+              = df.text_field :name, class: 'form-control'
+              = df.error_messages_for(:name)
+          .col-md-6
+            .form-group
+              = df.label :time_of_day
+              = df.select :time_of_day, ["День", "Ночь"],
+              {include_blank: true}, {class: 'form-control'}
+              = df.error_messages_for(:time_of_day)
+        .row
+          .col-md-6
+            .form-group
+            = df.label :range
+            = df.select :range, ["в пределах МКАД", "за МКАД", "Подмосковье"],
+            {include_blank: true},  {class: 'form-control'}
+            = df.error_messages_for(:range)
+          .col-md-6
+            .form-group
+            = df.label :price_per_kilometer
+            = df.text_field :price_per_kilometer, class: 'form-control'
+            %span.input-group-addon
+              %span.glyphicon.glyphicon-ruble
   .actions
     = f.submit nil, class: 'btn btn-primary'

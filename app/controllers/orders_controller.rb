@@ -24,6 +24,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order.build_tariff
   end
 
   # GET /orders/1/edit
@@ -78,6 +79,7 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:time_of_travel, :departure_address, :arrival_address, :number_of_passengers, :length_of_route, :automobile_id, :tariff_id)
+      params.require(:order).permit(:time_of_travel, :departure_address, :arrival_address, :number_of_passengers, :length_of_route, :automobile_id,
+      tariff_attributes: [:_destroy, :id, :name, :time_of_day, :range, :price_per_kilometer])
     end
 end
