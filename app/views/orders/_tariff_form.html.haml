@@ -1,0 +1,26 @@
+= df.hidden_field(:id)
+.row
+  .col-md-6
+    .form-group
+      = df.label :name
+      = df.text_field :name, class: 'form-control'
+      = df.error_messages_for(:name)
+  .col-md-6
+    .form-group
+      = df.label :time_of_day
+      = df.select :time_of_day, ["День", "Ночь"],
+      {include_blank: true}, {class: 'form-control'}
+      = df.error_messages_for(:time_of_day)
+.row
+  .col-md-6
+    .form-group
+    = df.label :range
+    = df.select :range, ["в пределах МКАД", "за МКАД", "Подмосковье"],
+    {include_blank: true},  {class: 'form-control'}
+    = df.error_messages_for(:range)
+  .col-md-6
+    .form-group
+    = df.label :price_per_kilometer
+    = df.text_field :price_per_kilometer, class: 'form-control'
+    %span.input-group-addon
+      %span.glyphicon.glyphicon-ruble

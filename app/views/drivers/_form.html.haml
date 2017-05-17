@@ -39,37 +39,17 @@
         = f.error_messages_for(:passport)
   %div{class: 'panel panel-info'}
     .panel-heading
-      = t('activerecord.models.automobile')
+      .row
+        .col-md-12
+          .form-group
+            = f.label :automobile_id
+            = f.select :automobile_id,
+            options_for_select(Automobile.all.map{|x|[x.automobile_model + ": " + x.state_number + " [" + x.automobile_type + "]", x.id]} + [[@driver.new_record? ? "*Создание нового" : "*Редактирование"]]),
+            {include_blank: true}, {class: 'form-control'}
+            = f.error_messages_for(:automobile_id)
     .panel-body
-      = f.fields_for (:automobile) do |df|
-        = df.hidden_field(:id)
-        .row
-          .col-md-6
-            .form-group
-              = df.label :automobile_model
-              = df.text_field :automobile_model, class: 'form-control'
-              = df.error_messages_for(:automobile_model)
-          .col-md-6
-            .form-group
-              = df.label :automobile_type
-              = df.select :automobile_type, ["Бизнес", "Эконом"],
-              {include_blank: true}, {class: 'form-control'}
-              = df.error_messages_for(:automobile_type)
-        .row
-          .col-md-6
-            .form-group
-              = df.label :state_number
-              = df.text_field :state_number, class: 'form-control'
-              = df.error_messages_for(:state_number)
-          .col-md-3
-            .form-group
-              = df.label :color
-              = df.text_field :color, class: 'form-control'
-              = df.error_messages_for(:color)
-          .col-md-3
-            .form-group
-              = df.label :release
-              = df.number_field :release, class: 'form-control'
-              = df.error_messages_for(:release)
+      = f.fields_for :automobile, f.object.automobile || f.object.build_automobile do |df|
+        %fieldset#automobile-fieldset{"data-content" => "#{render "automobile_form", df: df}"}
+          %div#automobile-fields
   .actions
-    = f.submit nil, class: 'btn btn-primary'
+    = f.submit nil, class: 'btn btn-primary', id: 'save'

@@ -1,0 +1,28 @@
+= df.hidden_field :id
+.row
+  .col-md-6
+    .form-group
+      = df.label :automobile_model
+      = df.text_field :automobile_model, class: 'form-control'
+      = df.error_messages_for(:automobile_model)
+  .col-md-6
+    .form-group
+      = df.label :automobile_type
+      = df.select :automobile_type, ["Бизнес", "Эконом"], {include_blank: true}, {class: 'form-control'}
+      = df.error_messages_for(:automobile_type)
+.row
+  .col-md-6
+    .form-group
+      = df.label :state_number
+      = df.text_field :state_number, class: 'form-control'
+      = df.error_messages_for(:state_number)
+  .col-md-3
+    .form-group
+      = df.label :color
+      = df.text_field :color, class: 'form-control'
+      = df.error_messages_for(:color)
+  .col-md-3
+    .form-group
+      = df.label :release
+      = df.number_field :release, class: 'form-control'
+      = df.error_messages_for(:release)

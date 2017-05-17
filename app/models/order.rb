@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   validates :arrival_address, length: {minimum: 10, maximum: 64}
   validates :number_of_passengers, numericality: {greater_than_or_equal_to: 1}
   validates :length_of_route, numericality: {greater_than_or_equal_to: 1}
-  validates :time_of_travel, :automobile_id, :tariff_id, presence: true
+  validates :time_of_travel, :automobile_id, presence: true
 
   accepts_nested_attributes_for :tariff, allow_destroy: true
 
