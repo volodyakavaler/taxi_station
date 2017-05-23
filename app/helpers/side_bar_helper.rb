@@ -16,7 +16,7 @@ module SideBarHelper
        :icon => 'users',
        :class => 'long'},
       {:name => 'Добавление',
-       :controller => :users, :action => :new,
+       :controller => :users, :action => :new_by_admin,
        :icon => 'user-plus'},
       {:name => 'Роли',
        :controller => :roles, :action => :index,
