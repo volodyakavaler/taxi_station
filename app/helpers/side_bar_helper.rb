@@ -34,7 +34,11 @@ module SideBarHelper
       {:name => 'Заказы',
        :controller => :orders, :action => :index,
        :icon => 'sticky-note',
-       :class => 'long'}
+       :class => 'long'},
+       {:name => 'Поиск заказов',
+        :controller => :orders, :action => :search,
+        :icon => 'search',
+        :class => 'long'}
     ]} if (ru.try(:is_admin?) or ru.try(:is_operator?))
     result
   end
