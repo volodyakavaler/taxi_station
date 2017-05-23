@@ -47,7 +47,7 @@
           .form-group
             = f.label :tariff_id
             = f.select :tariff_id,
-            options_for_select(Tariff.all.map{|x|[x.name, x.id]} + [[@order.new_record? ? "*Создание нового" : "*Редактирование"]],
+            options_for_select(Tariff.all.map{|x|[x.name, x.id]} + (@order.new_record? ? ["*Создание нового"] : ["*Создание нового", "*Редактирование"]),
             @order.new_record? ? "*Создание нового" : "*Редактирование"),
             {}, {class: 'form-control'}
             = f.error_messages_for(:tariff_id)
