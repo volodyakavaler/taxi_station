@@ -8,18 +8,48 @@
 
 %h1= @driver.last_name + " " + @driver.first_name + " " + @driver.patronymic
 
-%dl
-  %dt= Driver.human_attribute_name(:last_name)
-  %dd= @driver.last_name
-  %dt= Driver.human_attribute_name(:first_name)
-  %dd= @driver.first_name
-  %dt= Driver.human_attribute_name(:patronymic)
-  %dd= @driver.patronymic
-  %dt= Driver.human_attribute_name(:date_of_birth)
-  %dd= @driver.date_of_birth
-  %dt= Driver.human_attribute_name(:itn)
-  %dd= @driver.itn
-  %dt= Driver.human_attribute_name(:passport)
-  %dd= @driver.passport
-  %dt= Driver.human_attribute_name(:automobile_id)
-  %dd= @driver.automobile != nil ? @driver.automobile.state_number : '-'
+
+.alert.alert-info
+  .row
+    .col-md-12
+      %table.table.table-hover.table-striped
+        %thead
+          %tr
+            %th
+              = Driver.human_attribute_name(:last_name)
+              = Driver.human_attribute_name(:first_name)
+              = Driver.human_attribute_name(:patronymic)
+          %tbody
+            %td.center
+              = @driver.last_name
+              = @driver.first_name
+              = @driver.patronymic
+  .row
+    .col-md-4
+      %table.table.table-hover.table-striped
+        %thead
+          %tr
+            %th
+              = Driver.human_attribute_name(:passport)
+          %tbody
+            %td.center= @driver.passport
+    .col-md-4
+      %table.table.table-hover.table-striped
+        %thead
+          %tr
+            %th
+              = Driver.human_attribute_name(:itn)
+          %tbody
+            %td.center= @driver.itn
+    .col-md-4
+      %table.table.table-hover.table-striped
+        %thead
+          %tr
+            %th
+              = Driver.human_attribute_name(:automobile_id)
+          %tbody
+            %td.center
+              - if @driver.automobile.nil?
+                = '-'
+              - else
+                = "#{@driver.automobile.automobile_model}, #{@driver.automobile.state_number} [#{@driver.automobile.automobile_type}]"
