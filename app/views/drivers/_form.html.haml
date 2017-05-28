@@ -45,7 +45,7 @@
             = f.label :automobile_id
             = f.select :automobile_id,
             options_for_select(Automobile.all.map{|x|[x.automobile_model + ": " + x.state_number + " [" + x.automobile_type + "]", x.id]} + (@driver.new_record? ? ["*Создание нового"] : ["*Создание нового", "*Редактирование"]),
-            @driver.new_record? ? "*Создание нового" : "*Редактирование"),
+            f.object.automobile_id.nil? ? "*Создание нового" : f.object.automobile_id),
             {include_blank: true}, {class: 'form-control'}
             = f.error_messages_for(:automobile_id)
     .panel-body

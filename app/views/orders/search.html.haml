@@ -67,19 +67,19 @@
           .form-group
             = Tariff.human_attribute_name(:name)
             = select_tag 'search[tariff_name]',
-            options_for_select(Tariff.all.map{|x| [x.name, x.name]}.sort),
+            options_for_select((Tariff.all.map{|x| [x.name, x.name]}.sort), @old_tariff_name),
             {include_blank: true, class: 'form-control'}
         .col-md-3
           .form-group
             = Tariff.human_attribute_name(:time_of_day)
             = select_tag 'search[time_of_day]',
-            options_for_select(Tariff.all.map{|x| [x.time_of_day, x.time_of_day]}.uniq.sort),
+            options_for_select((Tariff.all.map{|x| [x.time_of_day, x.time_of_day]}.uniq.sort), @old_time_of_day),
             {include_blank: true, class: 'form-control'}
         .col-md-3
           .form-group
             = Tariff.human_attribute_name(:range)
             = select_tag 'search[range]',
-            options_for_select(Tariff.all.map{|x| [x.range, x.range]}.uniq.sort),
+            options_for_select((Tariff.all.map{|x| [x.range, x.range]}.uniq.sort), @old_range),
             {include_blank: true, class: 'form-control'}
         .col-md-3
           .form-group
@@ -99,13 +99,13 @@
           .form-group
             = Automobile.human_attribute_name(:automobile_model)
             = select_tag 'search[automobile_model]',
-            options_for_select(Automobile.all.map{|x| [x.automobile_model, x.automobile_model]}.uniq.sort),
+            options_for_select((Automobile.all.map{|x| [x.automobile_model, x.automobile_model]}.uniq.sort), @old_automobile_model),
             {include_blank: true, class: 'form-control'}
         .col-md-2
           .form-group
             = Automobile.human_attribute_name(:automobile_type)
             = select_tag 'search[automobile_type]',
-            options_for_select(Automobile.all.map{|x| [x.automobile_type, x.automobile_type]}.uniq.sort),
+            options_for_select((Automobile.all.map{|x| [x.automobile_type, x.automobile_type]}.uniq.sort), @old_automobile_type),
             {include_blank: true, class: 'form-control'}
         .col-md-3
           .form-group
@@ -117,7 +117,7 @@
           .form-group
             = Automobile.human_attribute_name(:color)
             = select_tag 'search[color]',
-            options_for_select(Automobile.all.map{|x| [x.color, x.color]}.uniq.sort),
+            options_for_select((Automobile.all.map{|x| [x.color, x.color]}.uniq.sort), @old_color),
             {include_blank: true, class: 'form-control'}
         .col-md-2
           .form-group

@@ -8,6 +8,12 @@ class OrdersController < ApplicationController
       @orders = []
     end
     params['search'] ||= {}
+    @old_tariff_name      = params.has_key?('search') ? params[:search][:tariff_name] : ""
+    @old_time_of_day      = params.has_key?('search') ? params[:search][:time_of_day] : ""
+    @old_range            = params.has_key?('search') ? params[:search][:range] : ""
+    @old_automobile_model = params.has_key?('search') ? params[:search][:automobile_model] : ""
+    @old_automobile_type  = params.has_key?('search') ? params[:search][:automobile_type] : ""
+    @old_color            = params.has_key?('search') ? params[:search][:color] : ""
   end
 
   # GET /orders
